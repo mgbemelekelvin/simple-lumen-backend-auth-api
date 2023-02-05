@@ -97,6 +97,7 @@ class Handler extends ExceptionHandler
         }
 
         //unexpected error
-        return $this->response(ResponseAlias::HTTP_INTERNAL_SERVER_ERROR, 'Unexpected error. Try again', '');
+        $res = ['Error' => ['message' => $exception->getMessage(), 'file' => $exception->getFile(), 'line' => $exception->getLine()], 'userId'=>Auth::check()?Auth::user()->id:'', 'address' => config('app.url')];
+        return $this->response(ResponseAlias::HTTP_INTERNAL_SERVER_ERROR, 'Unexpected error. Try again', $res);
     }
 }
