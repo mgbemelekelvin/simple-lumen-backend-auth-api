@@ -226,7 +226,7 @@ class AuthenticationRepository implements AuthenticationRepositoryInterface
                 $email_message_1 = '<p style="text-align: left;">A password reset was initiated for your account.<br> Please click on the link below to change your password. <br>Note that the link is valid for '.CarbonInterval::minutes($verificationType->expiry_time)->cascade()->forHumans().'. After the time limit has expired, you will have to resubmit the request for a password reset.</p>';
                 $email_message_2 = '<p style="text-align: left;">If you did not initiate this request. Kindly ignore the mail.</p>';
                 $email_button_1 = 'Change Your Password Now';
-                $email_button_url_1 = URL::to('/').'/api/v1/reset-password/'.$code.'?app='.$request->app;
+                $email_button_url_1 = 'https://simple-react-app.herokuapp.com/reset-password/'.$code.'?app='.$request->app;
                 $res = 'Password Reset Link has been sent to your email.';
             } else {
                 $email_subject = 'Your One Verification Code';
